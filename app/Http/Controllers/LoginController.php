@@ -24,9 +24,11 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            //session regenerate untuk menghindari teknik hacking session fixation attack
             return redirect()->intended('/dashboard');
+            //intended untuk me-redirect user ke sebuah tempat/URL sebelum melewati sebuah authentication middleware 
         }
-
+        //Jika login gagal, maka kembali ke halaman login dengan memberikan pesan error
         return back()->with('loginError', 'Login Failed!');
     }
 
@@ -34,11 +36,12 @@ class LoginController extends Controller
 
         Auth::logout();
 
-        request()->session()->invalidate();
-
-        request()->session()->regenerateToken();
-
+        request()->session()->invalidate(); 
+            //Supaya tidak bisa dipakai
+        request()->session()->regenerateToken(); 
+            //Supaya tidak di bajak
         return redirect('/');
+            //Beralih ke halaman home
     }
     
 }

@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        User::create([
+            'name' => 'Akhelisera',
+            'username' => 'akhelisera',
+            'email' => 'akhelisera@gmail.com',
+            'password' => bcrypt('Akhelisera')
+        ]);
+
         User::factory(3)->create();
 
         Category::create([
@@ -34,16 +41,13 @@ class DatabaseSeeder extends Seeder
         
         // \App\Models\User::factory(10)->create();
 
-        // User::create([
-        //     'name' => 'Bayu Kristianto',
-        //     'email' => 'bayuk2020@gmail.com',
-        //     'password' => bcrypt('12345')
-        // ]);
-        // User::create([
-        //     'name' => 'Sandhika Galih',
-        //     'email' => 'sandhikagalih@gmail.com',
-        //     'password' => bcrypt('67890')
-        // ]);
+        User::create([
+            'name' => 'Bayu Kristianto',
+            'username' => 'bayuk2020',
+            'email' => 'bayuk2020@gmail.com',
+            'password' => bcrypt('1234567890')
+        ]);
+        
 
 
 
